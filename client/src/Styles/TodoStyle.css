@@ -1,0 +1,43 @@
+.backdrop {
+  background-color: #87ceeb;
+  height: 100vh;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+
+.container1 {
+  width: 500px;
+  height: 700px;
+  margin: auto;
+  padding: 10px;
+  position: relative;
+  text-align: center;
+  background-color: white;
+}
+
+.input {
+  width: 250px;
+  height: 30px;
+  align-items: normal;
+}
+
+.h1 {
+  text-align: center;
+}
+.loginlink {
+  color: blue;
+  font-size: larger;
+  text-decoration: solid;
+  right: 200px;
+  float: right;
+  position: absolute;
+}
+.signuplink {
+  color: blue;
+  font-size: larger;
+  text-decoration: solid;
+  right: 135px;
+  float: right;
+  position: absolute;
+}

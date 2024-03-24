@@ -20,7 +20,7 @@ con.on("open", () => {
 
 app.use(express.json());
 
-app.use(cors({ origin: "http://localhost:3000" }));
+app.use(cors({ origin: "https://mern-todoapp-frontend.onrender.com" }));
 
 const userRouter = require("./controller/usercontroller");
 const todoRouter = require("./controller/todocontroller");

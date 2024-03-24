@@ -27,7 +27,7 @@ const TodoPage = () => {
           console.log("getall api is going to be called");
 
           const response = await fetch(
-            "https://mern-todoapp-by3e.onrender.com"
+            "https://mern-todoapp-by3e.onrender.com/todo/getall"
           );
           // const response = await fetch(`${BASE_URL}/todo/getall`);
           console.log("getall api is called from todo page");
@@ -62,13 +62,16 @@ const TodoPage = () => {
     console.log(item);
     const id = item._id;
     try {
-      const response = await fetch(`https://mern-todoapp-by3e.onrender.com/todo/delete/${id}`, {
-        method: "DELETE",
-        headers: {
-          "Content-Type": "application/json",
-        },
-        body: JSON.stringify(item),
-      });
+      const response = await fetch(
+        "https://mern-todoapp-by3e.onrender.com/todo/delete/${id}",
+        {
+          method: "DELETE",
+          headers: {
+            "Content-Type": "application/json",
+          },
+          body: JSON.stringify(item),
+        }
+      );
       if (response.ok) {
         const data = await response.text();
         setFetchTrigger(true);
@@ -92,11 +95,14 @@ const TodoPage = () => {
     console.log(item);
     const id = item._id;
     try {
-      const response = await fetch(`https://mern-todoapp-by3e.onrender.com/todo/update/${id}`, {
-        method: "PATCH",
-        headers: { "Content-Type": "application/json" },
-        body: JSON.stringify(item),
-      });
+      const response = await fetch(
+        "https://mern-todoapp-by3e.onrender.com/todo/update/${id}",
+        {
+          method: "PATCH",
+          headers: { "Content-Type": "application/json" },
+          body: JSON.stringify(item),
+        }
+      );
 
       if (response.ok) {
         const data = response.json();

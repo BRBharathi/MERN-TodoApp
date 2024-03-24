@@ -1,11 +1,17 @@
 const express = require("express");
+require("dotenv").config;
 const app = express();
 const bodyparser = require("body-parser");
 const { default: mongoose } = require("mongoose");
 const cors = require("cors");
 
-const url = "mongodb://localhost:27017/TodoDatabase";
-mongoose.connect(url, { useNewUrlParser: true, useUnifiedTopology: true });
+const dotenv = require("dotenv");
+dotenv.config();
+
+const url = process.env.MONGODB_URI;
+console.log(url);
+mongoose.connect(url, { useNewUrlParser: true });
+
 const con = mongoose.connection;
 //connecting with database
 con.on("open", () => {
@@ -21,19 +27,7 @@ const todoRouter = require("./controller/todocontroller");
 app.use("/user", userRouter);
 app.use("/todo", todoRouter);
 
-// Move the wildcard route handler to the end
-/*app.use("*", (req, res) => {
-  res.status(404).send("Not Found");
-});
- */
 // starting the server
-app.listen(8080, () => {
-  console.log("Server started on port 8080");
+app.listen(process.env.PORT, () => {
+  console.log("Server started on port", process.env.PORT);
 });
-
-//starting the server
-/*app
-  .use((req, res) => {
-    res.send("server started");
-  })
-  .listen(8080);*/

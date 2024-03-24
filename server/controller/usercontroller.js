@@ -1,7 +1,7 @@
 const express = require("express");
 const router = express.Router();
-import User from "../model/User";
-//const User = require("../model/user");
+
+const User = require("../model/User");
 
 const bcrypt = require("bcrypt");
 const { mongoose } = require("mongoose");

@@ -1,6 +1,8 @@
 const express = require("express");
 const router = express.Router();
-const User = require("../model/user");
+import User from "../model/User";
+//const User = require("../model/user");
+
 const bcrypt = require("bcrypt");
 const { mongoose } = require("mongoose");
 const jwt = require("jsonwebtoken");
@@ -45,13 +47,11 @@ router.post("/login", async (req, res) => {
       console.log("Token :", token);
       res.cookie("jwt", token, { httpOnly: true, maxAge: 3600000 });
 
-      return res
-        .status(201)
-        .json({
-          message: "login success with jwt",
-          user: user._id,
-          token: token,
-        });
+      return res.status(201).json({
+        message: "login success with jwt",
+        user: user._id,
+        token: token,
+      });
       //return res.status(200).json({ message: "Login successful", user: user });
     } else {
       return res.status(401).json({ message: "Invalid password" });

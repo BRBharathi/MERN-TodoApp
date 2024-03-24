@@ -5,7 +5,7 @@ function TodoForm({ isUserLoggedIn, updateTodoList }) {
 
   const addTodo = async (todo) => {
     try {
-      const response = await fetch("http://localhost:8080/todo/add", {
+      const response = await fetch("https://mern-todoapp-by3e.onrender.com/todo/add", {
         method: "Post",
         headers: {
           "Content-Type": "application/json",

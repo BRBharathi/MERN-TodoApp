@@ -16,7 +16,7 @@ const TodoPage = () => {
 
   const [fetchTrigger, setFetchTrigger] = useState(isUserLoggedIn);
   const [selectedTodo, setSelectedTodo] = useState("");
-
+  const BASE_URL = process.env.API_BASE_URL;
   //List the Todos from the Database
 
   useEffect(() => {
@@ -25,7 +25,9 @@ const TodoPage = () => {
         console.log("user logged in");
         try {
           console.log("getall api is going to be called");
+          console.log("Base url", BASE_URL);
           const response = await fetch("http://localhost:8080/todo/getall");
+          // const response = await fetch(`${BASE_URL}/todo/getall`);
           console.log("getall api is called from todo page");
           if (response.ok) {
             const data = await response.json();

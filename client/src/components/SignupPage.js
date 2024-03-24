@@ -11,6 +11,7 @@ const SignupPage = () => {
 
   const onSignUp = async (name, email, password) => {
     try {
+      const baseUrl = process.env.BASE_URL;
       const response = await fetch("http://localhost:8080/user/register", {
         method: "POST",
         headers: {

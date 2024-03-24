@@ -9,8 +9,10 @@ function LoginPage() {
   const navigate = useNavigate();
   const [loginFailed, setLoginFailed] = useState(false);
   const { isUserLoggedIn, setIsUserLoggedIn } = useContext(AuthContext);
+  const baseUrl = process.env.BASE_URL;
   const onSignIn = async (email, password) => {
     try {
+      //const response = await fetch(`${baseUrl}/user/login`, {
       const response = await fetch("http://localhost:8080/user/login", {
         method: "Post",
         headers: {

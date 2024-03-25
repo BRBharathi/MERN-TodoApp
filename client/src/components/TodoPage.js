@@ -61,9 +61,10 @@ const TodoPage = () => {
     console.log(item._id);
     console.log(item);
     const id = item._id;
+    console.log("itemid", id);
     try {
       const response = await fetch(
-        "https://mern-todoapp-by3e.onrender.com/todo/delete/${id}",
+        `https://mern-todoapp-by3e.onrender.com/todo/delete/${id}`,
         {
           method: "DELETE",
           headers: {

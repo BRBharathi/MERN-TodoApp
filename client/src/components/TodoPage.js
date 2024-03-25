@@ -94,9 +94,10 @@ const TodoPage = () => {
     console.log("update clicked");
     console.log(item);
     const id = item._id;
+    console.log("itemid", id);
     try {
       const response = await fetch(
-        "https://mern-todoapp-by3e.onrender.com/todo/update/id",
+        `https://mern-todoapp-by3e.onrender.com/todo/update/${id}`,
         {
           method: "PATCH",
           headers: { "Content-Type": "application/json" },

@@ -96,7 +96,7 @@ const TodoPage = () => {
     const id = item._id;
     try {
       const response = await fetch(
-        "https://mern-todoapp-by3e.onrender.com/todo/update/${id}",
+        "https://mern-todoapp-by3e.onrender.com/todo/update/id",
         {
           method: "PATCH",
           headers: { "Content-Type": "application/json" },

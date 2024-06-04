@@ -14,7 +14,7 @@ router.get("/getall", async (req, res) => {
     }
     return res.status(200).json({ todo: todoList });
   } catch (err) {
-    return res.status(500).json({ message: "Internal server error" });
+    return res.status(500).json({ message: "Internal server err" });
   }
 });
 

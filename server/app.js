@@ -1,6 +1,6 @@
 const express = require("express");
 const path = require("path");
-require("dotenv").config;
+require("dotenv").config();
 const app = express();
 const bodyparser = require("body-parser");
 const { default: mongoose } = require("mongoose");
@@ -38,6 +38,7 @@ app.use("/todo", todoRouter);
 app.get("/*", function (req, res) {
   res.sendFile(path.join(buildPath, "index.html"), function (err) {
     if (err) {
+      console.log(err);
       res.status(500).json({ message: "Internal server error" });
     }
   });

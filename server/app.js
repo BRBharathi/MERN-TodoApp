@@ -1,4 +1,5 @@
 const express = require("express");
+const path = require("path");
 require("dotenv").config;
 const app = express();
 const bodyparser = require("body-parser");
@@ -19,13 +20,28 @@ con.on("open", () => {
 });
 
 app.use(express.json());
+const corsOptions = {
+  origin: "http://localhost:3000",
+  methods: ["GET", "POST", "DELETE", "PATCH"],
+  optionsSuccessStatus: 200,
+};
 
-app.use(cors({ origin: "https://mern-todoapp-frontend.onrender.com" }));
+app.use(cors(corsOptions));
+const buildPath = path.join(__dirname, "../client/build");
+app.use(express.static(buildPath));
 
 const userRouter = require("./controller/usercontroller");
 const todoRouter = require("./controller/todocontroller");
 app.use("/user", userRouter);
 app.use("/todo", todoRouter);
+
+app.get("/*", function (req, res) {
+  res.sendFile(path.join(buildPath, "index.html"), function (err) {
+    if (err) {
+      res.status(500).json({ message: "Internal server error" });
+    }
+  });
+});
 
 // starting the server
 app.listen(process.env.PORT, () => {

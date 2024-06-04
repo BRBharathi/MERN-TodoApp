@@ -13,7 +13,7 @@ function LoginPage() {
   const onSignIn = async (email, password) => {
     try {
       //const response = await fetch(`${baseUrl}/user/login`, {
-      const response = await fetch("https://mern-todoapp-by3e.onrender.com/user/login", {
+      const response = await fetch("http://localhost:8080/user/login", {
         method: "Post",
         headers: {
           "Content-Type": "application/json",
@@ -47,7 +47,10 @@ function LoginPage() {
   };
 
   return (
-    <div className="container-fluid d-flex align-items-center justify-content-center vh-100">
+    <div
+      className="container-fluid d-flex align-items-center justify-content-center vh-100"
+      style={{ backgroundColor: "#f7f7f7" }}
+    >
       <div className="col-lg-4 border p-4 rounded">
         <h1 className="mb-4 text-center">Login</h1>
         <form onSubmit={handleSubmit}>
@@ -76,6 +79,7 @@ function LoginPage() {
           </button>
 
           <p className="text-center">
+            Guest User <Link to="/todo"></Link>
             New user? <Link to="/signup">Sign up here</Link>
           </p>
         </form>

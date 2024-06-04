@@ -20,17 +20,17 @@ const TodoPage = () => {
   //List the Todos from the Database
 
   useEffect(() => {
+    console.log("is user loggedin", isUserLoggedIn);
     const fetchTodos = async () => {
       if (isUserLoggedIn) {
         console.log("user logged in");
         try {
           console.log("getall api is going to be called");
 
-          const response = await fetch(
-            "https://mern-todoapp-by3e.onrender.com/todo/getall"
-          );
-          // const response = await fetch(`${BASE_URL}/todo/getall`);
+          const response = await fetch("http://localhost:8080/todo/getall");
+
           console.log("getall api is called from todo page");
+
           if (response.ok) {
             const data = await response.json();
             console.log("getall data from todopage", data);
@@ -63,16 +63,13 @@ const TodoPage = () => {
     const id = item._id;
     console.log("itemid", id);
     try {
-      const response = await fetch(
-        `https://mern-todoapp-by3e.onrender.com/todo/delete/${id}`,
-        {
-          method: "DELETE",
-          headers: {
-            "Content-Type": "application/json",
-          },
-          body: JSON.stringify(item),
-        }
-      );
+      const response = await fetch(`http://localhost:8080/todo/delete/${id}`, {
+        method: "DELETE",
+        headers: {
+          "Content-Type": "application/json",
+        },
+        body: JSON.stringify(item),
+      });
       if (response.ok) {
         const data = await response.text();
         setFetchTrigger(true);
@@ -97,14 +94,11 @@ const TodoPage = () => {
     const id = item._id;
     console.log("itemid", id);
     try {
-      const response = await fetch(
-        `https://mern-todoapp-by3e.onrender.com/todo/update/${id}`,
-        {
-          method: "PATCH",
-          headers: { "Content-Type": "application/json" },
-          body: JSON.stringify(item),
-        }
-      );
+      const response = await fetch(`http://localhost:8080/todo/update/${id}`, {
+        method: "PATCH",
+        headers: { "Content-Type": "application/json" },
+        body: JSON.stringify(item),
+      });
 
       if (response.ok) {
         const data = response.json();

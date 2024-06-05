@@ -14,7 +14,7 @@ router.get("/getall", async (req, res) => {
     }
     return res.status(200).json({ todo: todoList });
   } catch (err) {
-    return res.status(500).json({ message: "Internal server err" });
+    return res.status(500).json({ message: "Internal server err getall" });
   }
 });
 
@@ -29,7 +29,7 @@ router.post("/add", async (req, res) => {
     const { _id, todo } = savedTodo;
     return res.status(201).json({ _id, todo });
   } catch (err) {
-    return res.status(500).json({ message: "Internal server error" });
+    return res.status(500).json({ message: "Internal server error add todo" });
   }
 });
 
@@ -46,7 +46,9 @@ router.delete("/delete/:id", async (req, res) => {
 
     return res.status(200).json({ message: "Todo deleted" });
   } catch (err) {
-    return res.status(500).json({ message: "Internal server Error" });
+    return res
+      .status(500)
+      .json({ message: "Internal server Error delete todo" });
   }
 });
 
@@ -66,7 +68,9 @@ router.patch("/update/:id", async (req, res) => {
       return res.status(400).json({ message: "Todo is not found or updated" });
     else return res.status(200).json({ message: "Todo is updated" });
   } catch (err) {
-    return res.status(500).json({ message: "Internal Server Error" });
+    return res
+      .status(500)
+      .json({ message: "Internal Server Error update todo" });
   }
 });
 

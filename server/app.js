@@ -36,9 +36,10 @@ app.use("/user", userRouter);
 app.use("/todo", todoRouter);
 
 app.get("/*", function (req, res) {
-  res.sendFile(path.join(buildPath, "index.html"), function (err) {
+  const indexPath = path.join(buildPath, "index.html");
+  res.sendFile(indexPath, function (err) {
     if (err) {
-      console.log(err);
+      console.error("Error occurred while sending index.html:", err);
       res.status(500).json({ message: "Internal server errorrs" });
     }
   });

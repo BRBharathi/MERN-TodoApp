@@ -2,10 +2,10 @@ import React, { useState } from "react";
 
 function TodoForm({ isUserLoggedIn, updateTodoList }) {
   const [todo, setTodo] = useState("");
-
+  const API_URL = process.env.REACT_APP_API_URL;
   const addTodo = async (todo) => {
     try {
-      const response = await fetch("http://localhost:8080/todo/add", {
+      const response = await fetch(`${API_URL}/todo/add`, {
         method: "Post",
         headers: {
           "Content-Type": "application/json",

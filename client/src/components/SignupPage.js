@@ -8,10 +8,11 @@ const SignupPage = () => {
   const [password, setPassword] = useState("");
   const navigate = useNavigate();
   const [signupFailed, setSignupFailed] = useState(false);
+  const API_URL = process.env.REACT_APP_API_URL;
 
   const onSignUp = async (name, email, password) => {
     try {
-      const response = await fetch("http://localhost:8080/user/register", {
+      const response = await fetch(`${API_URL}/user/register`, {
         method: "POST",
         headers: {
           "Content-Type": "application/json",

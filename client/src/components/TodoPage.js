@@ -16,7 +16,7 @@ const TodoPage = () => {
 
   const [fetchTrigger, setFetchTrigger] = useState(isUserLoggedIn);
   const [selectedTodo, setSelectedTodo] = useState("");
-
+  const API_URL = process.env.REACT_APP_API_URL;
   //List the Todos from the Database
 
   useEffect(() => {
@@ -27,7 +27,7 @@ const TodoPage = () => {
         try {
           console.log("getall api is going to be called");
 
-          const response = await fetch("http://localhost:8080/todo/getall");
+          const response = await fetch(`${API_URL}/todo/getall`);
 
           console.log("getall api is called from todo page");
 
@@ -63,7 +63,7 @@ const TodoPage = () => {
     const id = item._id;
     console.log("itemid", id);
     try {
-      const response = await fetch(`http://localhost:8080/todo/delete/${id}`, {
+      const response = await fetch(`${API_URL}/todo/delete/${id}`, {
         method: "DELETE",
         headers: {
           "Content-Type": "application/json",
@@ -94,7 +94,7 @@ const TodoPage = () => {
     const id = item._id;
     console.log("itemid", id);
     try {
-      const response = await fetch(`http://localhost:8080/todo/update/${id}`, {
+      const response = await fetch(`${API_URL}/todo/update/${id}`, {
         method: "PATCH",
         headers: { "Content-Type": "application/json" },
         body: JSON.stringify(item),

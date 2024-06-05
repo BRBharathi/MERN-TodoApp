@@ -39,7 +39,7 @@ app.get("/*", function (req, res) {
   res.sendFile(path.join(buildPath, "index.html"), function (err) {
     if (err) {
       console.log(err);
-      res.status(500).json({ message: "Internal server error" });
+      res.status(500).json({ message: "Internal server errorrs" });
     }
   });
 });

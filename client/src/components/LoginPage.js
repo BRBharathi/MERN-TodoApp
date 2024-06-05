@@ -14,6 +14,7 @@ function LoginPage() {
   const onSignIn = async (email, password) => {
     try {
       //const response = await fetch(`${baseUrl}/user/login`, {
+      console.log("url", API_URL);
       const response = await fetch(`${API_URL}/user/login`, {
         method: "Post",
         headers: {

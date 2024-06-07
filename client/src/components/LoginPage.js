@@ -15,7 +15,8 @@ function LoginPage() {
     try {
       //const response = await fetch(`${baseUrl}/user/login`, {
       console.log("url", API_URL);
-      const response = await fetch(`${API_URL}/user/login`, {
+
+      const response = await fetch("http://34.224.79.44:8080/user/login", {
         method: "Post",
         headers: {
           "Content-Type": "application/json",

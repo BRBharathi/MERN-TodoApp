@@ -10,10 +10,12 @@ function LoginPage() {
   const [loginFailed, setLoginFailed] = useState(false);
   const { isUserLoggedIn, setIsUserLoggedIn } = useContext(AuthContext);
 
+  const API_URL = process.env.REACT_APP_API_URL;
   const onSignIn = async (email, password) => {
     try {
       //const response = await fetch(`${baseUrl}/user/login`, {
-      const response = await fetch("http://localhost:8080/user/login", {
+      console.log("url", API_URL);
+      const response = await fetch(`${API_URL}/user/login`, {
         method: "Post",
         headers: {
           "Content-Type": "application/json",
